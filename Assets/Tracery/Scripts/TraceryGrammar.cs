@@ -14,11 +14,6 @@ namespace UnityTracery {
     private static readonly Regex non_escaped_backslash_regex = new Regex(@"(?<=(?:\\(?(esc)(?<-esc>)|(?<esc>)))*)(?(esc)(?!))\\(?!\\)");
 
     /// <summary>
-    /// The raw json grammar string.
-    /// </summary>
-    public string RawGrammar;
-
-    /// <summary>
     /// Key/value store for grammar rules.
     /// </summary>
     public JSONObject Grammar;
@@ -31,16 +26,8 @@ namespace UnityTracery {
     /// <summary>
     /// Modifier function table.
     /// </summary>
-    public Dictionary<string, Func<string, string>> ModifierLookup;
-
-    public TraceryGrammar(string source) {
-      RawGrammar = (source ?? "").Trim();
-      if (!ParseRulesJson()) {
-        throw new Exception("Input grammar is not valid JSON.");
-      }
-
-      // Set up the standard modifiers.
-      ModifierLookup = new Dictionary<string, Func<string, string>> {
+    public static Dictionary<string, Func<string, string>> ModifierLookup = new Dictionary<string, Func<string, string>>
+    {
         {"a", Modifiers.Article},
         {"beeSpeak", Modifiers.BeeSpeak},
         {"capitalize", Modifiers.Capitalize},
@@ -52,7 +39,27 @@ namespace UnityTracery {
         {"titleCase", Modifiers.TitleCase}
       };
 
-      SaveData = new JSONObject();
+    public TraceryGrammar(JSONObject json)
+    {
+        Grammar = json;
+        Setup();
+    }
+
+    public TraceryGrammar(string source)
+    {
+        var raw = (source ?? "").Trim();
+        Grammar = new JSONObject(raw);
+        Setup();
+    }
+
+    private void Setup()
+    {
+        if (!ParseRulesJson())
+        {
+            throw new Exception("Input grammar is not valid JSON.");
+        }
+
+        SaveData = new JSONObject();
     }
 
     public void SeedRandom(int seed) {
@@ -256,7 +263,6 @@ namespace UnityTracery {
     }
 
     private bool ParseRulesJson() {
-      Grammar = new JSONObject(RawGrammar);
       if (!Grammar.IsObject) {
         Grammar = null;
         return false;
