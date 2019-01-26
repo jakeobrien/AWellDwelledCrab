@@ -33,11 +33,16 @@ public class GrammarRule : ScriptableObject
         foreach (var symbol in symbols)
         {
             var strings = new List<JSONObject>();
-            foreach (var s in symbol.strings) strings.Add(JSONObject.Create(s));
+            foreach (var s in symbol.strings)
+            {
+                var js = JSONObject.CreateStringObject(s);
+                strings.Add(js);
+            }
             dict[symbol.id] = new JSONObject(strings.ToArray());
         }
         var json = new JSONObject(dict);
         _grammar = new TraceryGrammar(json);
+        // Dr.Log(json.ToString());
     }
 
 

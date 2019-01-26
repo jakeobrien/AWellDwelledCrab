@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb44f58ade48471dbd6a2bb27970a76, type: 3}
   m_Name: Greeting
   m_EditorClassIdentifier: 
-  rootId: greeting
+  rootId: '#greeting#'
   symbols:
   - id: greeting
     strings:
