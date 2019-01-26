@@ -10,7 +10,6 @@ public class Test : MonoBehaviour
     [SerializeField]
     private string _test;
 
-
     [ContextMenu("Test")]
     public void DoTest()
     {

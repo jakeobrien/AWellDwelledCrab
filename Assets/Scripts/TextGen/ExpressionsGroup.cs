@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Text/wordlist")]
-public class WordListReference : Reference<StringArrayReference[]>
+
+[CreateAssetMenu(menuName = "TextGen/ExpressionsGroup")]
+public class ExpressionsGroup : Reference<Expressions[]>
 {
 
     public string GetRandom()

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Text;
 
-[CreateAssetMenu(menuName = "Text/WordMappings")]
+[CreateAssetMenu(menuName = "TextGen/WordMappings")]
 public class WordMappings : ScriptableObject
 {
 
@@ -12,7 +12,7 @@ public class WordMappings : ScriptableObject
     public class Mapping
     {
         public string code;
-        public WordListReference wordRef;
+        public ExpressionsGroup wordRef;
     }
     [SerializeField]
     private Mapping[] _mappings;
@@ -21,17 +21,15 @@ public class WordMappings : ScriptableObject
     public string Make(string pattern)
     {
         var result = new StringBuilder(pattern);
-            var c = 0;
-            var i = 0;
+        var c = 0;
+        var i = 0;
         foreach (var mapping in _mappings)
         {
-            Dr.Log(i);
             while ((i = result.ToString().IndexOf(mapping.code)) >= 0)
             {
-                Dr.Log(i);
-                    result.Remove(i, mapping.code.Length);
-                    result.Insert(i, mapping.wordRef.GetRandom());
-                //     // result.Insert(i, Make(mapping.wordRef.GetRandom()));
+                result.Remove(i, mapping.code.Length);
+                // result.Insert(i, mapping.wordRef.GetRandom());
+                result.Insert(i, Make(mapping.wordRef.GetRandom()));
                 c++;
                 if (c > 10) break;
 
@@ -47,7 +45,7 @@ public class WordMappings : ScriptableObject
         return words.GetRandom();
     }
 
-    private WordListReference GetWordRefForCode(string code)
+    private ExpressionsGroup GetWordRefForCode(string code)
     {
         foreach (var mapping in _mappings)
         {
