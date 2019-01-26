@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float smoothing;
     public float arriveThreshold;
-    public Camera cam;
+    public CameraReference cameraReference;
     public LayerMask groundLayers;
     public Rigidbody playerRigidbody;
     public GameObject destinationMarker;
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            var ray = cam.ScreenPointToRay(Input.mousePosition);
+            var ray = cameraReference.value.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100f, groundLayers.value))
             {

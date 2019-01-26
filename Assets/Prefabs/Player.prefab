@@ -124,7 +124,7 @@ MonoBehaviour:
   speed: 5
   smoothing: 1
   arriveThreshold: 1
-  cam: {fileID: 0}
+  cameraReference: {fileID: 11400000, guid: 0093ec0db569744e1b7e63348fbc98f9, type: 2}
   groundLayers:
     serializedVersion: 2
     m_Bits: 512

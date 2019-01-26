@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 77400078232997705}
   - component: {fileID: 5557930823929803776}
   - component: {fileID: 600166688245083688}
+  - component: {fileID: 195533312975686025}
   m_Layer: 5
   m_Name: TextBubble
   m_TagString: Untagged
@@ -143,7 +144,7 @@ RectTransform:
   m_GameObject: {fileID: 2336422915988683875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.02, z: 1}
   m_Children:
   - {fileID: 1792675183093014030}
   m_Father: {fileID: 0}
@@ -189,6 +190,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visibleRoot: {fileID: 1358543874340816283}
   text: {fileID: 640635914972738788}
+--- !u!114 &195533312975686025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336422915988683875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28729b9dba7484944bdeafc84ae66986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 5557930823929803776}
+  cameraRef: {fileID: 11400000, guid: 0093ec0db569744e1b7e63348fbc98f9, type: 2}
+  billboard: 1
 --- !u!1 &8887032408011318479
 GameObject:
   m_ObjectHideFlags: 0
