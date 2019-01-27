@@ -9,15 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public float smoothing;
     public float rotationNoise;
     public float rotationNoiseSpeed;
-    public float arriveThreshold;
     public PlayerState playerState;
     public CameraReference cameraReference;
-    public LayerMask groundLayers;
     public Rigidbody playerRigidbody;
     public GameObject destinationMarker;
 
     private Vector3? _destination;
     private Vector3 _velocityCursor;
+    private Vector3 _direction;
 
     private void OnEnable()
     {
@@ -38,47 +37,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            var ray = cameraReference.value.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100f, groundLayers.value))
-            {
-                var dest = hit.point;
-                dest.y = 0f;
-                _destination = dest;
-                destinationMarker.SetActive(true);
-                destinationMarker.transform.position = dest;
-            }
-        }
+        _direction = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
     }
 
     private void Move()
     {
-        var targetVelocity = Vector3.zero;
-        if (_destination != null)
-        {
-            var dir = (_destination.Value - playerRigidbody.position);
-            dir.y = 0f;
-            dir.Normalize();
-            targetVelocity = dir * speed;
-            var targetRotation = Quaternion.LookRotation(dir, Vector3.up);
-            // targetRotation *= Quaternion.AngleAxis(Mathf.PerlinNoise(Time.time * rotationNoiseSpeed, 0f) * rotationNoise, Vector3.up);
-            var rotation = Quaternion.RotateTowards(playerRigidbody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            playerRigidbody.rotation = rotation;
-        }
+        var targetVelocity = cameraReference.value.transform.forward * _direction.z;
+        targetVelocity += cameraReference.value.transform.right * _direction.x;
+        targetVelocity.y = 0f;
+        targetVelocity = targetVelocity.normalized * speed;
         playerRigidbody.velocity = Vector3.SmoothDamp(playerRigidbody.velocity, targetVelocity, ref _velocityCursor, smoothing);
-        CheckForArrival();
-    }
-
-    private void CheckForArrival()
-    {
-        if (_destination == null) return;
-        if (Vector3.Distance(playerRigidbody.position, _destination.Value) < arriveThreshold)
-        {
-            destinationMarker.SetActive(false);
-            _destination = null;
-        }
+        var targetRotation = Quaternion.LookRotation(playerRigidbody.transform.forward, Vector3.up);
+        if (playerRigidbody.velocity.sqrMagnitude > 1f) targetRotation = Quaternion.LookRotation(playerRigidbody.velocity.normalized, Vector3.up);
+        if (_direction.x != 0f) targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.LookRotation(cameraReference.value.transform.right * _direction.x, Vector3.up), 90f);
+        // targetRotation *= Quaternion.AngleAxis(Mathf.PerlinNoise(Time.time * rotationNoiseSpeed, 0f) * rotationNoise, Vector3.up);
+        var rotation = Quaternion.RotateTowards(playerRigidbody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        playerRigidbody.rotation = rotation;
     }
 
 }
