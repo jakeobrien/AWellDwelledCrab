@@ -9,6 +9,8 @@ public class PromptTrigger : MonoBehaviour
 
     public TextBubble prompt;
     public KeyCode key;
+    public UnityEvent prompted;
+    public UnityEvent exited;
     public UnityEvent engaged;
 
     private bool _isShowingMenu;
@@ -25,6 +27,7 @@ public class PromptTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider coll)
     {
+        if (exited != null) exited.Invoke();
         if (!_isShowingMenu) return;
         ShowPrompt(false);
     }
@@ -42,6 +45,7 @@ public class PromptTrigger : MonoBehaviour
     private void ShowPrompt(bool show)
     {
         _isShowingMenu = show;
+        if (show && prompted != null) prompted.Invoke();
         if (show) prompt.Show(string.Format("Press [{0}]", key.ToString()));
         else prompt.Hide();
     }

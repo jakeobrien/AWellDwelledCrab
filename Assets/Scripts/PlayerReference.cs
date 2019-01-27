@@ -3,9 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PlayerState : ScriptableObject
-{
-
-    public bool isInMenu;
-
-}
+public class PlayerReference : Reference<Player> { }

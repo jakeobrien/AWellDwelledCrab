@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public float smoothing;
     public float rotationNoise;
     public float rotationNoiseSpeed;
-    public PlayerState playerState;
     public CameraReference cameraReference;
     public CharacterController controller;
     public GameObject destinationMarker;
+    public Animator animator;
 
     private Vector3? _destination;
     private Vector3 _velocityCursor;
@@ -21,17 +21,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        playerState.isInMenu = false;
         destinationMarker.SetActive(false);
     }
 
     private void Update()
     {
-        if (playerState.isInMenu)
-        {
-            _velocity = Vector3.zero;
-            return;
-        }
         GetInput();
         Move();
     }
@@ -55,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         // targetRotation *= Quaternion.AngleAxis(Mathf.PerlinNoise(Time.time * rotationNoiseSpeed, 0f) * rotationNoise, Vector3.up);
         var rotation = Quaternion.RotateTowards(controller.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         controller.transform.rotation = rotation;
+        animator.SetFloat("walkSpeed", _velocity.magnitude);
     }
 
 }
