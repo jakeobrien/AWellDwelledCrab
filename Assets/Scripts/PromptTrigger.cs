@@ -46,7 +46,10 @@ public class PromptTrigger : MonoBehaviour
     {
         _isShowingMenu = show;
         if (show && prompted != null) prompted.Invoke();
-        if (show) prompt.Show(string.Format("Press [{0}]", key.ToString()));
+        if (show)
+        {
+            prompt.Show(string.Format("Press [{0}]", key.ToString()));
+        }
         else prompt.Hide();
     }
 

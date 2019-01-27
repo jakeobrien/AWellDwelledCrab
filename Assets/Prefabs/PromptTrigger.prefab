@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5484909960337439721}
   - component: {fileID: 6126754235194115642}
   - component: {fileID: 4163914745620638004}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PromptTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +60,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: {fileID: 6620295738007525107}
   key: 32
+  prompted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  exited:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   engaged:
     m_PersistentCalls:
       m_Calls: []
@@ -76,6 +86,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TextBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336422915988683875, guid: fa184fd2c11554d9f82efd633f6a50da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 77400078232997705, guid: fa184fd2c11554d9f82efd633f6a50da,
         type: 3}
@@ -182,6 +197,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8887032408011318479, guid: fa184fd2c11554d9f82efd633f6a50da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2665088072475863876, guid: fa184fd2c11554d9f82efd633f6a50da,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -221,6 +241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 955677773581856984, guid: fa184fd2c11554d9f82efd633f6a50da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa184fd2c11554d9f82efd633f6a50da, type: 3}

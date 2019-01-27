@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public GameObject destinationMarker;
     public Animator animator;
+    public float gravity = 1f;
 
     private Vector3? _destination;
     private Vector3 _velocityCursor;
@@ -42,14 +43,18 @@ public class PlayerMovement : MonoBehaviour
         targetVelocity.y = 0f;
         targetVelocity = targetVelocity.normalized * speed;
         _velocity = Vector3.SmoothDamp(_velocity, targetVelocity, ref _velocityCursor, smoothing);
-        controller.SimpleMove(_velocity);
+        // controller.SimpleMove(_velocity);
+        _velocity.y -= gravity * Time.deltaTime;
+        controller.Move(_velocity * Time.deltaTime);
         var targetRotation = Quaternion.LookRotation(controller.transform.forward, Vector3.up);
         if (controller.velocity.sqrMagnitude > 1f) targetRotation = Quaternion.LookRotation(controller.velocity.normalized, Vector3.up);
         if (_direction.x != 0f) targetRotation = Quaternion.RotateTowards(targetRotation, Quaternion.LookRotation(cameraReference.value.transform.right * _direction.x, Vector3.up), 90f);
         // targetRotation *= Quaternion.AngleAxis(Mathf.PerlinNoise(Time.time * rotationNoiseSpeed, 0f) * rotationNoise, Vector3.up);
         var rotation = Quaternion.RotateTowards(controller.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         controller.transform.rotation = rotation;
-        animator.SetFloat("walkSpeed", _velocity.magnitude);
+        var walkSpeedVel = _velocity;
+        walkSpeedVel.y = 0f;
+        animator.SetFloat("walkSpeed", walkSpeedVel.magnitude);
     }
 
 }
