@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public float rotationSpeed;
     public float smoothing;
+    public float rotationNoise;
+    public float rotationNoiseSpeed;
     public float arriveThreshold;
     public CameraReference cameraReference;
     public LayerMask groundLayers;
@@ -48,7 +51,14 @@ public class PlayerMovement : MonoBehaviour
         var targetVelocity = Vector3.zero;
         if (_destination != null)
         {
-            targetVelocity = (_destination.Value - playerRigidbody.position).normalized * speed;
+            var dir = (_destination.Value - playerRigidbody.position);
+            dir.y = 0f;
+            dir.Normalize();
+            targetVelocity = dir * speed;
+            var targetRotation = Quaternion.LookRotation(dir, Vector3.up);
+            // targetRotation *= Quaternion.AngleAxis(Mathf.PerlinNoise(Time.time * rotationNoiseSpeed, 0f) * rotationNoise, Vector3.up);
+            var rotation = Quaternion.RotateTowards(playerRigidbody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            playerRigidbody.rotation = rotation;
         }
         playerRigidbody.velocity = Vector3.SmoothDamp(playerRigidbody.velocity, targetVelocity, ref _velocityCursor, smoothing);
         CheckForArrival();
