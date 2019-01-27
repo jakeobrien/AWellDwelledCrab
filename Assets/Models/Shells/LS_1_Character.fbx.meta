@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: 820d8e3db084f4b538f9b3d659700767
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Boots
+    100002: Eyes
+    100004: Hair
+    100006: hand:Body
+    100008: Jacket
+    100010: l_eye
+    100012: Lower_teeth
+    100014: //RootNode
+    100016: R_boot1
+    100018: R_boot2
+    100020: r_eye1
+    100022: Skirt2
+    100024: Teeth
+    100026: Upper_teeth
+    400000: Boots
+    400002: Eyes
+    400004: Hair
+    400006: hand:Body
+    400008: Jacket
+    400010: l_eye
+    400012: Lower_teeth
+    400014: //RootNode
+    400016: R_boot1
+    400018: R_boot2
+    400020: r_eye1
+    400022: Skirt2
+    400024: Teeth
+    400026: Upper_teeth
+    2100000: eyes
+    2100002: aiStandardSurface1
+    2100004: skirt
+    2100006: jacket
+    2100008: teeth
+    2100010: boots
+    2100012: skin
+    2300000: Hair
+    2300002: hand:Body
+    2300004: Jacket
+    2300006: l_eye
+    2300008: Lower_teeth
+    2300010: R_boot1
+    2300012: R_boot2
+    2300014: r_eye1
+    2300016: Skirt2
+    2300018: Upper_teeth
+    3300000: Hair
+    3300002: hand:Body
+    3300004: Jacket
+    3300006: l_eye
+    3300008: Lower_teeth
+    3300010: R_boot1
+    3300012: R_boot2
+    3300014: r_eye1
+    3300016: Skirt2
+    3300018: Upper_teeth
+    4300000: r_eye1
+    4300002: l_eye
+    4300004: Hair
+    4300006: Skirt2
+    4300008: Jacket
+    4300010: Lower_teeth
+    4300012: Upper_teeth
+    4300014: R_boot1
+    4300016: R_boot2
+    4300018: hand:Body
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
