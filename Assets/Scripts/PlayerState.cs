@@ -8,5 +8,4 @@ public class PlayerState : ScriptableObject
 
     public bool isInMenu;
 
-
 }

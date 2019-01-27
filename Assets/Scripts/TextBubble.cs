@@ -9,6 +9,11 @@ public class TextBubble : MonoBehaviour
     public GameObject visibleRoot;
     public Text text;
 
+    private void OnEnable()
+    {
+        visibleRoot.SetActive(false);
+    }
+
     public void Show(string t)
     {
         visibleRoot.SetActive(true);

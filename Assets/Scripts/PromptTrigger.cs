@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class MenuTrigger : MonoBehaviour
+public class PromptTrigger : MonoBehaviour
 {
 
-    public GameObject menuPrompt;
-    public GameObject menu;
-    public KeyCode menuKey;
+    public TextBubble prompt;
+    public KeyCode key;
+    public UnityEvent engaged;
 
     private bool _isShowingMenu;
 
     private void OnEnable()
     {
-        ShowPrompt(false);
-        menu.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -33,17 +32,18 @@ public class MenuTrigger : MonoBehaviour
     private void Update()
     {
         if (!_isShowingMenu) return;
-        if (Input.GetKeyDown(menuKey))
+        if (Input.GetKeyDown(key))
         {
             ShowPrompt(false);
-            menu.SetActive(true);
+            if (engaged != null) engaged.Invoke();
         }
     }
 
     private void ShowPrompt(bool show)
     {
         _isShowingMenu = show;
-        menuPrompt.SetActive(show);
+        if (show) prompt.Show(string.Format("Press [{0}]", key.ToString()));
+        else prompt.Hide();
     }
 
 }

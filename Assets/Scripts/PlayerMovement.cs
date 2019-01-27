@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationNoise;
     public float rotationNoiseSpeed;
     public float arriveThreshold;
+    public PlayerState playerState;
     public CameraReference cameraReference;
     public LayerMask groundLayers;
     public Rigidbody playerRigidbody;
@@ -20,11 +21,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        playerState.isInMenu = false;
         destinationMarker.SetActive(false);
     }
 
     private void Update()
     {
+        if (playerState.isInMenu)
+        {
+            playerRigidbody.velocity = Vector3.zero;
+            return;
+        }
         GetInput();
         Move();
     }
