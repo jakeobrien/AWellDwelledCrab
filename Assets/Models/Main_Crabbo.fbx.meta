@@ -48,6 +48,7 @@ ModelImporter:
     100084: transform7
     100086: transform8
     100088: transform9
+    100090: CRABBO
     400000: Ge0_MainLegR2
     400002: Geo_MainBody
     400004: Geo_MainClawL
@@ -93,7 +94,9 @@ ModelImporter:
     400084: transform7
     400086: transform8
     400088: transform9
+    400090: CRABBO
     2100000: lambert1
+    2100002: lambert2
     4300000: Geo_MainClawL
     4300002: Geo_MainLegL1
     4300004: Geo_MainLegL2
@@ -111,7 +114,12 @@ ModelImporter:
     13700010: Geo_MainLegL1
     13700012: Geo_MainLegL2
     13700014: Geo_MainLegR1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: f3af46c5a029f4007970eb2fac1a5956, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -142,7 +150,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 30
+    globalScale: 32
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -163,7 +171,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.099999994
+    previousCalculatedGlobalScale: 0.32
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
